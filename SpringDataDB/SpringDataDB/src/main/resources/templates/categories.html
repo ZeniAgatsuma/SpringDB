@@ -1,0 +1,17 @@
+<!-- src/main/resources/templates/categories.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Категорії</title>
+</head>
+<body>
+<h1>Список категорій</h1>
+
+<!-- Виведення категорій -->
+<ul>
+  <li th:each="category : ${categories}">
+    <a th:href="@{/products/category/{id}(id=${category.id})}" th:text="${category.name}">Назва категорії</a>
+  </li>
+</ul>
+</body>
+</html>

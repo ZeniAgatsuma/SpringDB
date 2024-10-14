@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Результати пошуку</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+  <h1 class="title">Результати пошуку</h1>
+
+  <form class="search-form" action="/products/search" method="get">
+    <input type="text" name="query" class="input-search" placeholder="Пошук продуктів" />
+    <button type="submit" class="btn">Пошук</button>
+  </form>
+
+  <ul class="product-list">
+    <th:block th:each="product : ${products}">
+      <li class="product-item" th:text="${product.name}"></li>
+    </th:block>
+  </ul>
+
+  <div th:if="${#lists.isEmpty(products)}">
+    <p>Нічого не знайдено.</p>
+  </div>
+
+  <a href="/products" class="btn">Повернутись до всіх продуктів</a>
+</div>
+</body>
+</html>
